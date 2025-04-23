@@ -16,6 +16,12 @@ router.get('/session', authenticateToken, async (req, res) => {
 });
 
 
+// User data
+router.get('/', authenticateToken, async (req, res) => {
+	return res.status(200).json({ message: "User data retrieved successfully.", data: req.user });
+});
+
+
 // Sign up
 router.post('/signup', async (req, res) => {
 	const { email, password } = req.body;
