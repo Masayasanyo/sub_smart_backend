@@ -138,4 +138,21 @@ router.post('/update', authenticateToken, async (req, res) => {
 	}
 });
 
+
+// Delete accounts
+router.delete('/', authenticateToken, async (req, res) => {
+	const accountId = req.user.id;
+
+	try {
+		await pool.query(
+			`DELETE FROM accounts WHERE id = $1;`,
+			[accountId]
+		);
+		return res.status(201).json({ message: "Account deleted successful." });
+	} catch (error) {
+		console.error(error);
+		return res.status(500).json({ error: "Internal server error." });
+	}
+});
+
 export default router;
