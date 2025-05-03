@@ -18,6 +18,9 @@ app.use("/flashcards", flashcardsRoutes);
 const { Pool } = pkg;
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL, 
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 export { pool };
@@ -25,4 +28,4 @@ export { pool };
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`)
-})
+});
