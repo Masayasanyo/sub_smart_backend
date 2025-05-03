@@ -15,6 +15,7 @@ app.use("/accounts", accountsRoutes);
 app.use("/transcript", transcriptRoutes);
 app.use("/flashcards", flashcardsRoutes);
 
+console.log(process.env.DATABASE_URL)
 const { Pool } = pkg;
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL, 
