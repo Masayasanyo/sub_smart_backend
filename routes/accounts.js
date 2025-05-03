@@ -113,7 +113,7 @@ router.post('/update', authenticateToken, async (req, res) => {
 			`,
 			[email, hashedPassword, accountId]
 			);
-			return res.status(201).json({ message: "Update account successful." });
+			return res.status(201).json({ message: "Account updated successfully." });
 		} catch (error) {
 			console.error(error);
 			return res.status(500).json({ error: "Internal server error." });
@@ -130,7 +130,7 @@ router.post('/update', authenticateToken, async (req, res) => {
 			`,
 			[email, accountId]
 			);
-			return res.status(201).json({ message: "Update account." });
+			return res.status(201).json({ message: "Account updated successfully." });
 		} catch (error) {
 			console.error(error);
 			return res.status(500).json({ error: "Internal server error." });

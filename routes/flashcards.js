@@ -41,7 +41,7 @@ router.post("/", authenticateToken, async (req, res) => {
 
 		return res.status(200).json({ 
 			message: "Flashcard retrieved successfully.", 
-			card_info: flashcardResult.rows, 
+			card_info: flashcardResult.rows[0], 
 			cards: cardsResult.rows 
 		});
 	} catch (error) {
@@ -202,7 +202,7 @@ router.post('/result', authenticateToken, async (req, res) => {
 
         await client.query('COMMIT');
 
-        return res.status(201).json({ message: "Cards changed successfully."});
+        return res.status(201).json({ message: "Cards updated successfully."});
     } catch (error) {
         await client.query('ROLLBACK');
         console.error(error);
